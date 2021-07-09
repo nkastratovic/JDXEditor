@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define JDXEditorUI_TargetDir=$(var.JDXEditorUI.TargetDir)?>
-  <Product Id="*" Name="JDXEditor" Language="1033" Version="1.0.0.0" Manufacturer="NK" UpgradeCode="fb48cb8b-0219-4c1e-9c5c-f95d261bf2ac">
+  <Product Id="eb438299-8866-42a2-b8c0-d9e6a9a5255e" Name="JDXEditor" Language="1033" Version="1.0.0.0" Manufacturer="NK" UpgradeCode="fb48cb8b-0219-4c1e-9c5c-f95d261bf2ac">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <UIRef Id="WixUI_Minimal"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
