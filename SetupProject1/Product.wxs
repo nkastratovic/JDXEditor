@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define JDXEditorUI_TargetDir=$(var.JDXEditorUI.TargetDir)?>
+  <Product Id="*" Name="JDXEditor" Language="1033" Version="1.0.0.0" Manufacturer="NK" UpgradeCode="fb48cb8b-0219-4c1e-9c5c-f95d261bf2ac">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="JDXEditor" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="JDXEditor" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="JDXEditor"/>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="9bd13330-6540-406f-a3a8-d7f7c69ae7f9">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="JDXEditor" Description="JDXEditor" Target="[INSTALLFOLDER]JDXEditorUI.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\JDXEditor" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="cde1e030-eb64-49a5-b7b8-400b379c2d1a">
+        <Shortcut Id="ApplicationDesktopShortcut" Name="JDXEditor" Description="JDXEditor" Target="[INSTALLFOLDER]JDXEditorUI.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\JDXEditor" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      <!-- </Component> -->
+      <Component Id="JDXEditorUI.runtimeconfig.json" Guid="b4355fb6-d10e-4a71-8969-474afea26460">
+        <File Id="JDXEditorUI.runtimeconfig.json" Name="JDXEditorUI.runtimeconfig.json" Source="$(var.JDXEditorUI_TargetDir)JDXEditorUI.runtimeconfig.json" />
+      </Component>
+      <Component Id="JDXEditorUI.dll" Guid="264ec82b-ddd5-481c-916f-2abf13b1a13c">
+        <File Id="JDXEditorUI.dll" Name="JDXEditorUI.dll" Source="$(var.JDXEditorUI_TargetDir)JDXEditorUI.dll" />
+      </Component>
+      <Component Id="JDXEditorUI.exe" Guid="364ec82b-ddd5-481c-916f-2abf13b1a13c">
+        <File Id="JDXEditorUI.exe" Name="JDXEditorUI.exe" Source="$(var.JDXEditorUI_TargetDir)JDXEditorUI.exe" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

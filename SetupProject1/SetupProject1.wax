@@ -4,7 +4,7 @@
     <string>JDXEditorUI\JDXEditorUI.csproj</string>
   </DeployedProjects>
   <DirectoryMappings>
-    <Item Key="" Value="ProgramFilesFolder" />
+    <Item Key="" Value="INSTALLFOLDER" />
   </DirectoryMappings>
   <FileMappings />
   <DeploySymbols>false</DeploySymbols>

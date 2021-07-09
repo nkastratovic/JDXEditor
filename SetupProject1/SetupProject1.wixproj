@@ -4,9 +4,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>46fed44b-27a3-4077-b89a-e6a08074763b</ProjectGuid>
+    <ProjectGuid>a86a73c3-985a-42a3-9ff5-39d2002dcb9e</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>SetupProject</OutputName>
+    <OutputName>SetupProject1</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -22,7 +22,7 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SetupProject.wax" />
+    <Content Include="SetupProject1.wax" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JDXEditorUI\JDXEditorUI.csproj">
